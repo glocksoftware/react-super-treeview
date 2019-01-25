@@ -285,8 +285,7 @@ var SuperTreeview = function (_Component) {
                             checked: !!node.isChecked,
                             id: node.id
                         }),
-                        _react2.default.createElement('i', { className: 'input-helper' }),
-                        label
+                        _react2.default.createElement('i', { className: 'input-helper' })
                     )
                 );
             }
