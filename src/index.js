@@ -132,7 +132,6 @@ class SuperTreeview extends Component {
                       id={node.id}
                   />
                   <i className="input-helper" />
-                  {label}
                 </label>
               </div>
           );
