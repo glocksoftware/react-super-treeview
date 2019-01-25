@@ -198,12 +198,10 @@ var SuperTreeview = function (_Component) {
 
             if (isOneCheck) {
                 if (!(0, _isNil2.default)(lastCheckNode)) {
-                    var oldNote = (0, _find2.default)(data, lastCheckNode);
-
-                    if (currentNode.name === oldNote.name) {
-                        this.setState({ lastCheckNode: null });
+                    if (currentNode.name === lastCheckNode.name) {
+                        this.setState({ lastCheckNode: null, checkedCount: currentNode.isChecked ? 1 : 0 });
                     } else {
-                        oldNote.isChecked = !oldNote.isChecked;
+                        return;
                     }
                 }
             }

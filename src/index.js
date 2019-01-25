@@ -56,12 +56,10 @@ class SuperTreeview extends Component {
 
         if (isOneCheck) {
           if (!isNil(lastCheckNode)) {
-            const oldNote = find(data, lastCheckNode);
-
-            if (currentNode.name === oldNote.name) {
-              this.setState({ lastCheckNode: null });
+            if (currentNode.name === lastCheckNode.name) {
+              this.setState({ lastCheckNode: null, checkedCount: currentNode.isChecked ? 1 : 0 });
             } else {
-              oldNote.isChecked = !oldNote.isChecked;
+              return;
             }
           }
         }
