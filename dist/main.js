@@ -275,12 +275,7 @@ var SuperTreeview = function (_Component) {
                     { className: 'checkbox' },
                     _react2.default.createElement(
                         'label',
-                        {
-                            className: 'super-treeview-text',
-                            onClick: function onClick() {
-                                _this2.handleExpandToggle(node);
-                            }
-                        },
+                        { className: 'super-treeview-text' },
                         _react2.default.createElement('input', {
                             type: 'checkbox',
                             name: node[keywordLabel],
@@ -291,7 +286,13 @@ var SuperTreeview = function (_Component) {
                             id: node.id
                         }),
                         _react2.default.createElement('i', { className: 'input-helper' }),
-                        node[keywordLabel]
+                        _react2.default.createElement(
+                            'span',
+                            { onClick: function onClick() {
+                                    _this2.handleExpandToggle(node);
+                                } },
+                            node[keywordLabel]
+                        )
                     )
                 );
             }
