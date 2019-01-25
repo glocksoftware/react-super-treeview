@@ -121,7 +121,12 @@ class SuperTreeview extends Component {
         if (isCheckable(node, depth)) {
           return (
               <div className="checkbox">
-                <label>
+                <label
+                  className="super-treeview-text"
+                  onClick={() => {
+                      this.handleExpandToggle(node);
+                  }}
+                >
                   <input
                       type="checkbox"
                       name={node[keywordLabel]}
@@ -132,6 +137,7 @@ class SuperTreeview extends Component {
                       id={node.id}
                   />
                   <i className="input-helper" />
+                  {node[keywordLabel]}
                 </label>
               </div>
           );
@@ -252,16 +258,6 @@ class SuperTreeview extends Component {
                                       <div className="super-treeview-node-content">
                                           {printExpandButton(node, depth)}
                                           {printCheckbox(node, depth)}
-                                          <label
-                                              htmlFor={node.id}
-                                              title={nodeText}
-                                              className="super-treeview-text"
-                                              onClick={() => {
-                                                  this.handleExpandToggle(node);
-                                              }}
-                                          >
-                                              {nodeText}
-                                          </label>
                                           {printDeleteButton(node, depth)}
                                       </div>
                                       {printChildren(node)}

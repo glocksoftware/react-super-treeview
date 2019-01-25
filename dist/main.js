@@ -275,7 +275,12 @@ var SuperTreeview = function (_Component) {
                     { className: 'checkbox' },
                     _react2.default.createElement(
                         'label',
-                        null,
+                        {
+                            className: 'super-treeview-text',
+                            onClick: function onClick() {
+                                _this2.handleExpandToggle(node);
+                            }
+                        },
                         _react2.default.createElement('input', {
                             type: 'checkbox',
                             name: node[keywordLabel],
@@ -285,7 +290,8 @@ var SuperTreeview = function (_Component) {
                             checked: !!node.isChecked,
                             id: node.id
                         }),
-                        _react2.default.createElement('i', { className: 'input-helper' })
+                        _react2.default.createElement('i', { className: 'input-helper' }),
+                        node[keywordLabel]
                     )
                 );
             }
@@ -372,8 +378,6 @@ var SuperTreeview = function (_Component) {
     }, {
         key: 'printNodes',
         value: function printNodes(nodeArray) {
-            var _this5 = this;
-
             var _props9 = this.props,
                 keywordKey = _props9.keywordKey,
                 keywordLabel = _props9.keywordLabel,
@@ -420,18 +424,6 @@ var SuperTreeview = function (_Component) {
                                 { className: 'super-treeview-node-content' },
                                 printExpandButton(node, depth),
                                 printCheckbox(node, depth),
-                                _react2.default.createElement(
-                                    'label',
-                                    {
-                                        htmlFor: node.id,
-                                        title: nodeText,
-                                        className: 'super-treeview-text',
-                                        onClick: function onClick() {
-                                            _this5.handleExpandToggle(node);
-                                        }
-                                    },
-                                    nodeText
-                                ),
                                 printDeleteButton(node, depth)
                             ),
                             printChildren(node)
