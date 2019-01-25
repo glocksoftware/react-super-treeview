@@ -121,16 +121,18 @@ class SuperTreeview extends Component {
         if (isCheckable(node, depth)) {
           return (
               <div className="checkbox">
-                <input
-                    type="checkbox"
-                    name={node[keywordLabel]}
-                    onChange={(e) => {
-                        this.handleCheckToggle(node, e);
-                    }}
-                    checked={!!node.isChecked}
-                    id={node.id}
-                />
-                <i className="input-helper" />
+                <label>
+                  <input
+                      type="checkbox"
+                      name={node[keywordLabel]}
+                      onChange={(e) => {
+                          this.handleCheckToggle(node, e);
+                      }}
+                      checked={!!node.isChecked}
+                      id={node.id}
+                  />
+                  <i className="input-helper" />
+                </label>
               </div>
           );
         }
