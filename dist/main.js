@@ -271,24 +271,28 @@ var SuperTreeview = function (_Component) {
 
             if (isCheckable(node, depth)) {
                 return _react2.default.createElement(
-                    'label',
-                    { className: 'super-treeview-text' },
-                    _react2.default.createElement('input', {
-                        type: 'checkbox',
-                        name: node[keywordLabel],
-                        onChange: function onChange(e) {
-                            _this2.handleCheckToggle(node, e);
-                        },
-                        checked: !!node.isChecked,
-                        id: node.id
-                    }),
-                    _react2.default.createElement('i', { className: 'input-helper' }),
+                    'div',
+                    { className: 'checkbox' },
                     _react2.default.createElement(
-                        'span',
-                        { onClick: function onClick() {
-                                _this2.handleExpandToggle(node);
-                            } },
-                        node[keywordLabel]
+                        'label',
+                        { className: 'super-treeview-text' },
+                        _react2.default.createElement('input', {
+                            type: 'checkbox',
+                            name: node[keywordLabel],
+                            onChange: function onChange(e) {
+                                _this2.handleCheckToggle(node, e);
+                            },
+                            checked: !!node.isChecked,
+                            id: node.id
+                        }),
+                        _react2.default.createElement('i', { className: 'input-helper' }),
+                        _react2.default.createElement(
+                            'span',
+                            { onClick: function onClick() {
+                                    _this2.handleExpandToggle(node);
+                                } },
+                            node[keywordLabel]
+                        )
                     )
                 );
             }
