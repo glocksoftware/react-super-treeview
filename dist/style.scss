@@ -1,0 +1,182 @@
+// VARIABLES
+$super-treeview-text-color: #c3c7cc;
+$super-treeview-arrow-color: #969faa;
+$super-treeview-tree-stem-color: #000;
+$super-treeview-active-color: #376caf;
+
+.super-treeview * {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.super-treeview {
+  font-size: 100%;
+
+  > div {
+    > .super-treeview-no-children-transition {
+      transition-property: all;
+    }
+
+    > .super-treeview-no-children-transition-enter {
+      opacity: 0;
+      height: 0;
+      overflow: hidden;
+
+      &.super-treeview-no-children-transition-enter-active {
+        opacity: 1;
+        height: 0;
+      }
+    }
+
+    > .super-treeview-no-children {
+      overflow: hidden;
+      > .super-treeview-no-children-content {
+        margin: 2px 0;
+      }
+    }
+
+    > .super-treeview-node {
+      overflow: hidden;
+      > .super-treeview-children-container {
+        background-color: rgba(104,153,215, 0.05);
+        padding-left: 24px;
+        border-left: 1px solid $super-treeview-tree-stem-color;
+
+        > .super-treeview-loading {
+          padding: 0 3px;
+          margin: 2px 0;
+        }
+      }
+
+      > .super-treeview-node-content {
+        display: flex;
+        padding: 7px 10px;
+
+        > .round {
+          position: relative;
+          width: 26px;
+
+          label {
+            background-color: transparent;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+            height: 20px;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 20px;
+            &:after {
+                  border: 2px solid #969faa;
+                  border-top: none;
+                  border-right: none;
+                  content: "";
+                  height: 6px;
+                  left: 5px;
+                  opacity: 0;
+                  position: absolute;
+                  top: 5px;
+                  transform: rotate(-45deg);
+                  width: 9px;
+            }
+          }
+
+          input[type="checkbox"] {
+            visibility: hidden;
+          }
+          input[type="checkbox"]:checked + label {
+            background-color: $super-treeview-active-color;
+            border-color: $super-treeview-active-color;
+          }
+          input[type="checkbox"]:checked + label:after {
+            border-color: #ffffff;
+            opacity: 1;
+          }
+        }
+
+        > label {
+          cursor: pointer;
+          color: $super-treeview-text-color;
+          vertical-align: top;
+          text-overflow: ellipsis;
+          width: calc(100% - 40px);
+          overflow: hidden;
+          white-space: nowrap;
+          display: inline-block;
+          margin: 0;
+          font-weight: normal;
+          font-size: 100%;
+        }
+
+        > input[type=checkbox] {
+          float: left;
+          margin: 4px 5px 0 0;
+          line-height: normal;
+        }
+
+        > .super-treeview-triangle-btn {
+          float: left;
+          margin-right: 5px;
+          cursor: pointer;
+        }
+
+        > .super-treeview-triangle-btn-none {
+          cursor: none;
+        }
+
+        > .super-treeview-triangle-btn-right {
+          box-sizing: border-box;
+          height: 5px;
+          width: 5px;
+          border-style: solid;
+          border-color: $super-treeview-arrow-color;
+          border-width: 0px 1px 1px 0px;
+          transform: rotate(-45deg);
+          transition: border-width 150ms ease-in-out;
+          margin-top: 7px;
+        }
+
+        > .super-treeview-triangle-btn-down {
+          box-sizing: border-box;
+          height: 5px;
+          width: 5px;
+          border-style: solid;
+          border-color: $super-treeview-active-color;
+          border-width: 0px 1px 1px 0px;
+          transform: rotate(45deg);
+          transition: border-width 150ms ease-in-out;
+          margin-top: 7px;
+        }
+
+        > .delete-btn {
+          float: right;
+          cursor: pointer;
+        }
+
+        &.active {
+          background-color: rgba(104,153,215, 0.15);
+        }
+      }
+    }
+
+    > .super-treeview-node-transition {
+      transition-property: all;
+    }
+
+    > .super-treeview-node-transition-enter {
+      opacity: 0;
+
+      &.super-treeview-node-transition-enter-active {
+        opacity: 1;
+      }
+    }
+
+    > .super-treeview-node-transition-exit {
+      opacity: 1;
+
+      &.super-treeview-node-transition-exit-active {
+        opacity: 0;
+        background-color: red;
+      }
+    }
+  }
+}
