@@ -27,44 +27,10 @@
         padding: 0 3px;
         margin: 2px 0; }
     .super-treeview > div > .super-treeview-node > .super-treeview-node-content {
-      display: flex;
       padding: 0 3px;
       margin: 2px 0; }
-      .super-treeview > div > .super-treeview-node > .super-treeview-node-content > .round {
-        position: relative;
-        width: 26px; }
-        .super-treeview > div > .super-treeview-node > .super-treeview-node-content > .round label {
-          background-color: #fff;
-          border: 1px solid #ccc;
-          border-radius: 50%;
-          cursor: pointer;
-          height: 20px;
-          left: 0;
-          position: absolute;
-          top: 0;
-          width: 20px; }
-          .super-treeview > div > .super-treeview-node > .super-treeview-node-content > .round label:after {
-            border: 2px solid #969faa;
-            border-top: none;
-            border-right: none;
-            content: "";
-            height: 6px;
-            left: 5px;
-            opacity: 0;
-            position: absolute;
-            top: 5px;
-            transform: rotate(-45deg);
-            width: 9px; }
-        .super-treeview > div > .super-treeview-node > .super-treeview-node-content > .round input[type="checkbox"] {
-          visibility: hidden; }
-        .super-treeview > div > .super-treeview-node > .super-treeview-node-content > .round input[type="checkbox"]:checked + label {
-          background-color: #fff;
-          border-color: #969faa; }
-        .super-treeview > div > .super-treeview-node > .super-treeview-node-content > .round input[type="checkbox"]:checked + label:after {
-          opacity: 1; }
       .super-treeview > div > .super-treeview-node > .super-treeview-node-content > label {
         cursor: pointer;
-        color: #000;
         vertical-align: top;
         text-overflow: ellipsis;
         width: calc(100% - 55px);

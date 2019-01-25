@@ -47,54 +47,11 @@ $super-treeview-tree-stem-color: #000;
       }
 
       > .super-treeview-node-content {
-        display: flex;
         padding: 0 3px;
         margin: 2px 0;
 
-        > .round {
-          position: relative;
-          width: 26px;
-
-          label {
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 50%;
-            cursor: pointer;
-            height: 20px;
-            left: 0;
-            position: absolute;
-            top: 0;
-            width: 20px;
-            &:after {
-                  border: 2px solid #969faa;
-                  border-top: none;
-                  border-right: none;
-                  content: "";
-                  height: 6px;
-                  left: 5px;
-                  opacity: 0;
-                  position: absolute;
-                  top: 5px;
-                  transform: rotate(-45deg);
-                  width: 9px;
-            }
-          }
-
-          input[type="checkbox"] {
-            visibility: hidden;
-          }
-          input[type="checkbox"]:checked + label {
-            background-color: #fff;
-            border-color: #969faa;
-          }
-          input[type="checkbox"]:checked + label:after {
-            opacity: 1;
-          }
-        }
-
         > label {
           cursor: pointer;
-          color: $super-treeview-text-color;
           vertical-align: top;
           text-overflow: ellipsis;
           width: calc(100% - 55px);

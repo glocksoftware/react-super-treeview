@@ -120,7 +120,8 @@ class SuperTreeview extends Component {
 
         if (isCheckable(node, depth)) {
           return (
-              <div className="round">
+              <div className="checkbox">
+                <label>
                   <input
                       type="checkbox"
                       name={node[keywordLabel]}
@@ -130,7 +131,9 @@ class SuperTreeview extends Component {
                       checked={!!node.isChecked}
                       id={node.id}
                   />
-                  <label htmlFor={node.id}></label>
+                  <i className="input-helper" />
+                  {label}
+                </label>
               </div>
           );
         }

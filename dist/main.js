@@ -272,17 +272,22 @@ var SuperTreeview = function (_Component) {
             if (isCheckable(node, depth)) {
                 return _react2.default.createElement(
                     'div',
-                    { className: 'round' },
-                    _react2.default.createElement('input', {
-                        type: 'checkbox',
-                        name: node[keywordLabel],
-                        onChange: function onChange(e) {
-                            _this2.handleCheckToggle(node, e);
-                        },
-                        checked: !!node.isChecked,
-                        id: node.id
-                    }),
-                    _react2.default.createElement('label', { htmlFor: node.id })
+                    { className: 'checkbox' },
+                    _react2.default.createElement(
+                        'label',
+                        null,
+                        _react2.default.createElement('input', {
+                            type: 'checkbox',
+                            name: node[keywordLabel],
+                            onChange: function onChange(e) {
+                                _this2.handleCheckToggle(node, e);
+                            },
+                            checked: !!node.isChecked,
+                            id: node.id
+                        }),
+                        _react2.default.createElement('i', { className: 'input-helper' }),
+                        label
+                    )
                 );
             }
         }
