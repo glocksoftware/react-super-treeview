@@ -413,7 +413,8 @@ var SuperTreeview = function (_Component) {
                             },
                             _react2.default.createElement(
                                 'div',
-                                { className: 'super-treeview-node-content ' + (node.isChecked && depth == 0 ? 'active' : '') },
+                                { className: 'super-treeview-node-content' },
+                                printExpandButton(node, depth),
                                 printCheckbox(node, depth),
                                 _react2.default.createElement(
                                     'label',
@@ -427,7 +428,6 @@ var SuperTreeview = function (_Component) {
                                     },
                                     nodeText
                                 ),
-                                printExpandButton(node, depth),
                                 printDeleteButton(node, depth)
                             ),
                             printChildren(node)

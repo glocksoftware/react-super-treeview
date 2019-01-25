@@ -247,7 +247,8 @@ class SuperTreeview extends Component {
                                           getStyleClassCb(node)
                                       }
                                   >
-                                      <div className={`super-treeview-node-content ${node.isChecked && depth == 0 ? 'active' : ''}`}>
+                                      <div className="super-treeview-node-content">
+                                          {printExpandButton(node, depth)}
                                           {printCheckbox(node, depth)}
                                           <label
                                               htmlFor={node.id}
@@ -259,7 +260,6 @@ class SuperTreeview extends Component {
                                           >
                                               {nodeText}
                                           </label>
-                                          {printExpandButton(node, depth)}
                                           {printDeleteButton(node, depth)}
                                       </div>
                                       {printChildren(node)}

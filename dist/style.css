@@ -20,20 +20,21 @@
   .super-treeview > div > .super-treeview-node {
     overflow: hidden; }
     .super-treeview > div > .super-treeview-node > .super-treeview-children-container {
-      background-color: rgba(104, 153, 215, 0.05);
-      padding-left: 24px;
+      margin-left: 8px;
+      padding-left: 20px;
       border-left: 1px solid #000; }
       .super-treeview > div > .super-treeview-node > .super-treeview-children-container > .super-treeview-loading {
         padding: 0 3px;
         margin: 2px 0; }
     .super-treeview > div > .super-treeview-node > .super-treeview-node-content {
       display: flex;
-      padding: 7px 10px; }
+      padding: 0 3px;
+      margin: 2px 0; }
       .super-treeview > div > .super-treeview-node > .super-treeview-node-content > .round {
         position: relative;
         width: 26px; }
         .super-treeview > div > .super-treeview-node > .super-treeview-node-content > .round label {
-          background-color: transparent;
+          background-color: #fff;
           border: 1px solid #ccc;
           border-radius: 50%;
           cursor: pointer;
@@ -57,17 +58,16 @@
         .super-treeview > div > .super-treeview-node > .super-treeview-node-content > .round input[type="checkbox"] {
           visibility: hidden; }
         .super-treeview > div > .super-treeview-node > .super-treeview-node-content > .round input[type="checkbox"]:checked + label {
-          background-color: #376caf;
-          border-color: #376caf; }
+          background-color: #fff;
+          border-color: #969faa; }
         .super-treeview > div > .super-treeview-node > .super-treeview-node-content > .round input[type="checkbox"]:checked + label:after {
-          border-color: #ffffff;
           opacity: 1; }
       .super-treeview > div > .super-treeview-node > .super-treeview-node-content > label {
         cursor: pointer;
-        color: #c3c7cc;
+        color: #000;
         vertical-align: top;
         text-overflow: ellipsis;
-        width: calc(100% - 40px);
+        width: calc(100% - 55px);
         overflow: hidden;
         white-space: nowrap;
         display: inline-block;
@@ -85,30 +85,23 @@
       .super-treeview > div > .super-treeview-node > .super-treeview-node-content > .super-treeview-triangle-btn-none {
         cursor: none; }
       .super-treeview > div > .super-treeview-node > .super-treeview-node-content > .super-treeview-triangle-btn-right {
-        box-sizing: border-box;
-        height: 5px;
-        width: 5px;
-        border-style: solid;
-        border-color: #969faa;
-        border-width: 0px 1px 1px 0px;
-        transform: rotate(-45deg);
-        transition: border-width 150ms ease-in-out;
-        margin-top: 7px; }
+        width: 8px;
+        height: 10px;
+        margin-top: 2px;
+        margin-left: 2px;
+        border-top: 5px solid transparent;
+        border-left: 6px solid #000;
+        border-bottom: 5px solid transparent; }
       .super-treeview > div > .super-treeview-node > .super-treeview-node-content > .super-treeview-triangle-btn-down {
-        box-sizing: border-box;
-        height: 5px;
-        width: 5px;
-        border-style: solid;
-        border-color: #376caf;
-        border-width: 0px 1px 1px 0px;
-        transform: rotate(45deg);
-        transition: border-width 150ms ease-in-out;
-        margin-top: 7px; }
+        width: 10px;
+        height: 8px;
+        margin-top: 5px;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 6px solid #000; }
       .super-treeview > div > .super-treeview-node > .super-treeview-node-content > .delete-btn {
         float: right;
         cursor: pointer; }
-      .super-treeview > div > .super-treeview-node > .super-treeview-node-content.active {
-        background-color: rgba(104, 153, 215, 0.15); }
   .super-treeview > div > .super-treeview-node-transition {
     transition-property: all; }
   .super-treeview > div > .super-treeview-node-transition-enter {
