@@ -56,19 +56,19 @@ class SuperTreeview extends Component {
         const currentNodeIndex = data.indexOf(currentNode);
 
         if (isOneCheck) {
-          if (!isNil(lastCheckNode)) {
+          if (!isNil(SuperTreeview.lastCheckNode)) {
             if (currentNode.name === lastCheckNode.name) {
-              lastCheckNode = null;
-              checkedCount = e.target.checked ? 1 : 0;
-            } else if (checkedCount === 0) {
-              lastCheckNode = currentNode;
-              checkedCount = 1;
+              SuperTreeview.lastCheckNode = null;
+              SuperTreeview.checkedCount = e.target.checked ? 1 : 0;
+            } else if (SuperTreeview.checkedCount === 0) {
+              SuperTreeview.lastCheckNode = currentNode;
+              SuperTreeview.checkedCount = 1;
             } else {
               return;
             }
           } else {
-            lastCheckNode = currentNode;
-            checkedCount = 1;
+            SuperTreeview.lastCheckNode = currentNode;
+            SuperTreeview.checkedCount = 1;
           }
         }
 
