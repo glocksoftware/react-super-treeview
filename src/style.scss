@@ -51,6 +51,13 @@ $super-treeview-tree-stem-color: #000;
         margin: 2px 0;
         display: flex;
 
+        > .checkbox {
+          position: relative;
+          display: block;
+          margin-top: 0px!important;
+          margin-bottom: 0px!important;
+        }
+
         > label {
           cursor: pointer;
           vertical-align: top;
@@ -127,9 +134,4 @@ $super-treeview-tree-stem-color: #000;
       }
     }
   }
-}
-
-.checkbox {
-  margin-top: 0px!important;
-  margin-bottom: 0px!important;
 }
