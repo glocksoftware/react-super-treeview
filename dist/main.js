@@ -145,6 +145,8 @@ var SuperTreeview = function (_Component) {
             lastCheckToggledNodeIndex: null
         };
 
+        SuperTreeview.checkedCount = _this.props.folder ? 1 : 0;
+
         _this.handleUpdate = _this.handleUpdate.bind(_this);
 
         _this.printNodes = _this.printNodes.bind(_this);
@@ -184,7 +186,8 @@ var SuperTreeview = function (_Component) {
             var _props2 = this.props,
                 onCheckToggleCb = _props2.onCheckToggleCb,
                 depth = _props2.depth,
-                isOneCheck = _props2.isOneCheck;
+                isOneCheck = _props2.isOneCheck,
+                folder = _props2.folder;
             var lastCheckToggledNodeIndex = this.state.lastCheckToggledNodeIndex;
 
             var data = (0, _cloneDeep2.default)(this.state.data);
@@ -203,8 +206,15 @@ var SuperTreeview = function (_Component) {
                         return;
                     }
                 } else {
-                    SuperTreeview.lastCheckNode = currentNode;
-                    SuperTreeview.checkedCount = 1;
+                    if (currentNode.name === folder) {
+                        SuperTreeview.lastCheckNode = null;
+                        SuperTreeview.checkedCount = e.target.checked ? 1 : 0;
+                    } else if (SuperTreeview.checkedCount === 0) {
+                        SuperTreeview.lastCheckNode = currentNode;
+                        SuperTreeview.checkedCount = 1;
+                    } else {
+                        return;
+                    }
                 }
             }
 
@@ -496,6 +506,7 @@ SuperTreeview.propTypes = {
     depth: _propTypes2.default.number,
 
     isOneCheck: _propTypes2.default.bool,
+    folder: _propTypes2.default.string,
 
     deleteElement: _propTypes2.default.element,
 
@@ -526,6 +537,7 @@ SuperTreeview.defaultProps = {
     depth: 0,
 
     isOneCheck: false,
+    folder: '',
 
     deleteElement: _react2.default.createElement(
         'div',

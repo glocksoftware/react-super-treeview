@@ -18,6 +18,8 @@ class SuperTreeview extends Component {
             lastCheckToggledNodeIndex: null,
         };
 
+        SuperTreeview.checkedCount = this.props.folder ? 1 : 0;
+
         this.handleUpdate = this.handleUpdate.bind(this);
 
         this.printNodes = this.printNodes.bind(this);
@@ -49,7 +51,7 @@ class SuperTreeview extends Component {
     }
 
     handleCheckToggle(node, e) {
-        const { onCheckToggleCb, depth, isOneCheck } = this.props;
+        const { onCheckToggleCb, depth, isOneCheck, folder } = this.props;
         const { lastCheckToggledNodeIndex } = this.state;
         const data = cloneDeep(this.state.data);
         const currentNode = find(data, node);
@@ -67,8 +69,15 @@ class SuperTreeview extends Component {
               return;
             }
           } else {
-            SuperTreeview.lastCheckNode = currentNode;
-            SuperTreeview.checkedCount = 1;
+            if (currentNode.name === folder) {
+              SuperTreeview.lastCheckNode = null;
+              SuperTreeview.checkedCount = e.target.checked ? 1 : 0;
+            } else if (SuperTreeview.checkedCount === 0) {
+              SuperTreeview.lastCheckNode = currentNode;
+              SuperTreeview.checkedCount = 1;
+            } else {
+              return;
+            }
           }
         }
 
@@ -321,6 +330,7 @@ SuperTreeview.propTypes = {
     depth: PropTypes.number,
 
     isOneCheck: PropTypes.bool,
+    folder: PropTypes.string,
 
     deleteElement: PropTypes.element,
 
@@ -351,6 +361,7 @@ SuperTreeview.defaultProps = {
     depth: 0,
 
     isOneCheck: false,
+    folder: '',
 
     deleteElement: <div>(X)</div>,
 
