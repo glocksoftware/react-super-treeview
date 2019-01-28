@@ -132,9 +132,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var lastCheckNode = null;
-var checkedCount = 0;
-
 var SuperTreeview = function (_Component) {
     _inherits(SuperTreeview, _Component);
 
@@ -268,6 +265,7 @@ var SuperTreeview = function (_Component) {
 
             var _props5 = this.props,
                 isCheckable = _props5.isCheckable,
+                isExpandable = _props5.isExpandable,
                 keywordLabel = _props5.keywordLabel,
                 depth = _props5.depth;
 
@@ -291,7 +289,7 @@ var SuperTreeview = function (_Component) {
                         _react2.default.createElement('i', { className: 'input-helper' }),
                         _react2.default.createElement(
                             'span',
-                            { onClick: function onClick() {
+                            { className: isExpandable(node, depth) ? "font-bold" : null, onClick: function onClick() {
                                     _this2.handleExpandToggle(node);
                                 } },
                             node[keywordLabel]
@@ -488,6 +486,10 @@ var SuperTreeview = function (_Component) {
 
     return SuperTreeview;
 }(_react.Component);
+
+SuperTreeview.lastCheckNode = null;
+SuperTreeview.checkedCount = 0;
+
 
 SuperTreeview.propTypes = {
     data: _propTypes2.default.array.isRequired,

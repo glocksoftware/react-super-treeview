@@ -9,9 +9,6 @@ import get from 'lodash/get';
 import cloneDeep from 'lodash/cloneDeep';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
-var lastCheckNode = null;
-var checkedCount = 0;
-
 class SuperTreeview extends Component {
     constructor(props) {
         super(props);
@@ -35,6 +32,9 @@ class SuperTreeview extends Component {
         this.handleDelete = this.handleDelete.bind(this);
         this.handleExpandToggle = this.handleExpandToggle.bind(this);
     }
+
+    static lastCheckNode = null;
+    static checkedCount = 0;
 
     componentWillReceiveProps(nextProps) {
         if (!isEqual(nextProps.data, this.props.data)) {
@@ -122,7 +122,7 @@ class SuperTreeview extends Component {
     }
 
     printCheckbox(node) {
-        const { isCheckable, keywordLabel, depth } = this.props;
+        const { isCheckable, isExpandable, keywordLabel, depth } = this.props;
 
         if (isCheckable(node, depth)) {
           return (
@@ -138,7 +138,7 @@ class SuperTreeview extends Component {
                     id={node.id}
                 />
                 <i className="input-helper" />
-                <span onClick={() => { this.handleExpandToggle(node); }}>{node[keywordLabel]}</span>
+                <span className={isExpandable(node, depth) ? "font-bold" : null} onClick={() => { this.handleExpandToggle(node); }}>{node[keywordLabel]}</span>
               </label>
             </div>
           );
