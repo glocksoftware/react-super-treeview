@@ -61,6 +61,8 @@ class SuperTreeview extends Component {
             } else if (checkedCount !== 0) {
               return;
             }
+          } else {
+            this.setState({ lastCheckNode: currentNode, checkedCount: 1 });
           }
         }
 
