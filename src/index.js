@@ -58,7 +58,9 @@ class SuperTreeview extends Component {
           if (!isNil(lastCheckNode)) {
             if (currentNode.name === lastCheckNode.name) {
               this.setState({ lastCheckNode: null, checkedCount: currentNode.isChecked ? 1 : 0 });
-            } else if (checkedCount !== 0) {
+            } else if (checkedCount === 0) {
+              this.setState({ lastCheckNode: currentNode, checkedCount: 1 });
+            } else {
               return;
             }
           } else {
@@ -89,7 +91,7 @@ class SuperTreeview extends Component {
         }
 
         onCheckToggleCb(toggledNodes, depth);
-        this.setState({ lastCheckToggledNodeIndex: currentNodeIndex, lastCheckNode: currentNode });
+        this.setState({ lastCheckToggledNodeIndex: currentNodeIndex });
         this.handleUpdate(data);
     }
 

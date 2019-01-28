@@ -200,7 +200,9 @@ var SuperTreeview = function (_Component) {
                 if (!(0, _isNil2.default)(lastCheckNode)) {
                     if (currentNode.name === lastCheckNode.name) {
                         this.setState({ lastCheckNode: null, checkedCount: currentNode.isChecked ? 1 : 0 });
-                    } else if (checkedCount !== 0) {
+                    } else if (checkedCount === 0) {
+                        this.setState({ lastCheckNode: currentNode, checkedCount: 1 });
+                    } else {
                         return;
                     }
                 } else {
@@ -225,7 +227,7 @@ var SuperTreeview = function (_Component) {
             }
 
             onCheckToggleCb(toggledNodes, depth);
-            this.setState({ lastCheckToggledNodeIndex: currentNodeIndex, lastCheckNode: currentNode });
+            this.setState({ lastCheckToggledNodeIndex: currentNodeIndex });
             this.handleUpdate(data);
         }
     }, {
