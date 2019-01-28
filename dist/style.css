@@ -54,7 +54,7 @@
       .super-treeview > div > .super-treeview-node > .super-treeview-node-content > .super-treeview-triangle-btn-right {
         width: 8px;
         height: 10px;
-        margin-top: 12px;
+        margin-top: 2px;
         margin-left: 2px;
         border-top: 5px solid transparent;
         border-left: 6px solid #000;
@@ -62,7 +62,7 @@
       .super-treeview > div > .super-treeview-node > .super-treeview-node-content > .super-treeview-triangle-btn-down {
         width: 10px;
         height: 8px;
-        margin-top: 15px;
+        margin-top: 5px;
         border-left: 5px solid transparent;
         border-right: 5px solid transparent;
         border-top: 6px solid #000; }
@@ -80,3 +80,7 @@
     .super-treeview > div > .super-treeview-node-transition-exit.super-treeview-node-transition-exit-active {
       opacity: 0;
       background-color: red; }
+
+.checkbox {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important; }

@@ -200,7 +200,7 @@ var SuperTreeview = function (_Component) {
                 if (!(0, _isNil2.default)(lastCheckNode)) {
                     if (currentNode.name === lastCheckNode.name) {
                         this.setState({ lastCheckNode: null, checkedCount: currentNode.isChecked ? 1 : 0 });
-                    } else {
+                    } else if (checkedCount !== 0) {
                         return;
                     }
                 }
