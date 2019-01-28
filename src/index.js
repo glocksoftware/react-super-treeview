@@ -9,6 +9,9 @@ import get from 'lodash/get';
 import cloneDeep from 'lodash/cloneDeep';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
+var lastCheckNode = null;
+var checkedCount = 0;
+
 class SuperTreeview extends Component {
     constructor(props) {
         super(props);
@@ -16,8 +19,6 @@ class SuperTreeview extends Component {
         this.state = {
             data: cloneDeep(this.props.data),
             lastCheckToggledNodeIndex: null,
-            lastCheckNode: null,
-            checkedCount: 0
         };
 
         this.handleUpdate = this.handleUpdate.bind(this);
@@ -49,7 +50,7 @@ class SuperTreeview extends Component {
 
     handleCheckToggle(node, e) {
         const { onCheckToggleCb, depth, isOneCheck } = this.props;
-        const { lastCheckToggledNodeIndex, lastCheckNode, checkedCount } = this.state;
+        const { lastCheckToggledNodeIndex } = this.state;
         const data = cloneDeep(this.state.data);
         const currentNode = find(data, node);
         const currentNodeIndex = data.indexOf(currentNode);
@@ -57,14 +58,17 @@ class SuperTreeview extends Component {
         if (isOneCheck) {
           if (!isNil(lastCheckNode)) {
             if (currentNode.name === lastCheckNode.name) {
-              this.setState({ lastCheckNode: null, checkedCount: e.target.checked ? 1 : 0 });
+              lastCheckNode = null;
+              checkedCount = e.target.checked ? 1 : 0;
             } else if (checkedCount === 0) {
-              this.setState({ lastCheckNode: currentNode, checkedCount: 1 });
+              lastCheckNode = currentNode;
+              checkedCount = 1;
             } else {
               return;
             }
           } else {
-            this.setState({ lastCheckNode: currentNode, checkedCount: 1 });
+            lastCheckNode = currentNode;
+            checkedCount = 1;
           }
         }
 

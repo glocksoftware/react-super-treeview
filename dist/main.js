@@ -132,6 +132,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var lastCheckNode = null;
+var checkedCount = 0;
+
 var SuperTreeview = function (_Component) {
     _inherits(SuperTreeview, _Component);
 
@@ -142,9 +145,7 @@ var SuperTreeview = function (_Component) {
 
         _this.state = {
             data: (0, _cloneDeep2.default)(_this.props.data),
-            lastCheckToggledNodeIndex: null,
-            lastCheckNode: null,
-            checkedCount: 0
+            lastCheckToggledNodeIndex: null
         };
 
         _this.handleUpdate = _this.handleUpdate.bind(_this);
@@ -187,10 +188,7 @@ var SuperTreeview = function (_Component) {
                 onCheckToggleCb = _props2.onCheckToggleCb,
                 depth = _props2.depth,
                 isOneCheck = _props2.isOneCheck;
-            var _state = this.state,
-                lastCheckToggledNodeIndex = _state.lastCheckToggledNodeIndex,
-                lastCheckNode = _state.lastCheckNode,
-                checkedCount = _state.checkedCount;
+            var lastCheckToggledNodeIndex = this.state.lastCheckToggledNodeIndex;
 
             var data = (0, _cloneDeep2.default)(this.state.data);
             var currentNode = (0, _find2.default)(data, node);
@@ -199,14 +197,17 @@ var SuperTreeview = function (_Component) {
             if (isOneCheck) {
                 if (!(0, _isNil2.default)(lastCheckNode)) {
                     if (currentNode.name === lastCheckNode.name) {
-                        this.setState({ lastCheckNode: null, checkedCount: e.target.checked ? 1 : 0 });
+                        lastCheckNode = null;
+                        checkedCount = e.target.checked ? 1 : 0;
                     } else if (checkedCount === 0) {
-                        this.setState({ lastCheckNode: currentNode, checkedCount: 1 });
+                        lastCheckNode = currentNode;
+                        checkedCount = 1;
                     } else {
                         return;
                     }
                 } else {
-                    this.setState({ lastCheckNode: currentNode, checkedCount: 1 });
+                    lastCheckNode = currentNode;
+                    checkedCount = 1;
                 }
             }
 
