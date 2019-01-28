@@ -58,10 +58,6 @@ $super-treeview-tree-stem-color: #000;
           margin-bottom: 0px!important;
         }
 
-        > .font-bold {
-          font-weight: bold!important;
-        }
-
         > label {
           cursor: pointer;
           vertical-align: top;
@@ -138,4 +134,8 @@ $super-treeview-tree-stem-color: #000;
       }
     }
   }
+}
+
+.font-bold {
+  font-weight: bold!important;
 }

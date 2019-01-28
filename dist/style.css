@@ -35,8 +35,6 @@
         display: block;
         margin-top: 0px !important;
         margin-bottom: 0px !important; }
-      .super-treeview > div > .super-treeview-node > .super-treeview-node-content > .font-bold {
-        font-weight: bold !important; }
       .super-treeview > div > .super-treeview-node > .super-treeview-node-content > label {
         cursor: pointer;
         vertical-align: top;
@@ -87,3 +85,6 @@
     .super-treeview > div > .super-treeview-node-transition-exit.super-treeview-node-transition-exit-active {
       opacity: 0;
       background-color: red; }
+
+.font-bold {
+  font-weight: bold !important; }
