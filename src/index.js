@@ -151,6 +151,13 @@ class SuperTreeview extends Component {
               </label>
             </div>
           );
+        } else {
+          return (
+            <label className="super-treeview-text">
+              <i className="input-helper" />
+              <span className={isExpandable(node, depth) ? "font-bold" : null} onClick={() => { this.handleExpandToggle(node); }}>{node[keywordLabel]}</span>
+            </label>
+          );
         }
     }
 

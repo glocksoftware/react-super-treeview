@@ -306,6 +306,19 @@ var SuperTreeview = function (_Component) {
                         )
                     )
                 );
+            } else {
+                return _react2.default.createElement(
+                    'label',
+                    { className: 'super-treeview-text' },
+                    _react2.default.createElement('i', { className: 'input-helper' }),
+                    _react2.default.createElement(
+                        'span',
+                        { className: isExpandable(node, depth) ? "font-bold" : null, onClick: function onClick() {
+                                _this2.handleExpandToggle(node);
+                            } },
+                        node[keywordLabel]
+                    )
+                );
             }
         }
     }, {
