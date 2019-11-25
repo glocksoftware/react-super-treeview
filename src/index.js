@@ -268,8 +268,9 @@ class SuperTreeview extends Component {
                               >
                                   <div
                                       className={
-                                          'super-treeview-node' +
-                                          getStyleClassCb(node)
+                                          'super-treeview-node ' +
+                                          getStyleClassCb(node) +
+                                          typeof node.getStyleClassCb === "function" ? node.getStyleClassCb() : ''
                                       }
                                   >
                                       <div className="super-treeview-node-content">
