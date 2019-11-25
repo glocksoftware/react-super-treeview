@@ -41,7 +41,7 @@
         text-overflow: ellipsis;
         width: calc(100% - 55px);
         overflow: hidden;
-        white-space: nowrap;
+        white-space: normal;
         display: inline-block;
         margin: 0;
         font-weight: normal;
