@@ -260,20 +260,11 @@ class SuperTreeview extends Component {
                     ? this.printNoChildrenMessage()
                     : nodeArray.map((node, index) => {
                           const nodeText = get(node, keywordLabel, '');
-                          const teststyles = typeof node.getStyleClassCb === "function" ? node.getStyleClassCb() : '';
+                          const nodeCustomStyles = typeof node.getStyleClassCb === "function" ? node.getStyleClassCb() : '';
 
                           return (
-                              <CSSTransition
-                                  {...nodeTransitionProps}
-                                  key={node.id || index}
-                              >
-                                  <div
-                                      className={
-                                          'super-treeview-node ' +
-                                          getStyleClassCb(node) +
-                                          typeof node.getStyleClassCb === "function" ? node.getStyleClassCb() : ''
-                                      }
-                                  >
+                              <CSSTransition {...nodeTransitionProps} key={node.id || index}>
+                                  <div className={`super-treeview-node ${nodeCustomStyles}`}>
                                       <div className="super-treeview-node-content">
                                           {printExpandButton(node, depth)}
                                           {printCheckbox(node, depth)}

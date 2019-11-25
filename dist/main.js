@@ -86,8 +86,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 __webpack_require__(1);
@@ -435,18 +433,14 @@ var SuperTreeview = function (_Component) {
                 null,
                 (0, _isEmpty2.default)(nodeArray) && isExpandable(nodeArray, depth) ? this.printNoChildrenMessage() : nodeArray.map(function (node, index) {
                     var nodeText = (0, _get2.default)(node, keywordLabel, '');
-                    var teststyles = typeof node.getStyleClassCb === "function" ? node.getStyleClassCb() : '';
+                    var nodeCustomStyles = typeof node.getStyleClassCb === "function" ? node.getStyleClassCb() : '';
 
                     return _react2.default.createElement(
                         _reactTransitionGroup.CSSTransition,
-                        _extends({}, nodeTransitionProps, {
-                            key: node.id || index
-                        }),
+                        _extends({}, nodeTransitionProps, { key: node.id || index }),
                         _react2.default.createElement(
                             'div',
-                            {
-                                className: 'super-treeview-node ' + getStyleClassCb(node) + _typeof(node.getStyleClassCb) === "function" ? node.getStyleClassCb() : ''
-                            },
+                            { className: 'super-treeview-node ' + nodeCustomStyles },
                             _react2.default.createElement(
                                 'div',
                                 { className: 'super-treeview-node-content' },
