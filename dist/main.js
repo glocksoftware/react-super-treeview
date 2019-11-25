@@ -435,6 +435,7 @@ var SuperTreeview = function (_Component) {
                 null,
                 (0, _isEmpty2.default)(nodeArray) && isExpandable(nodeArray, depth) ? this.printNoChildrenMessage() : nodeArray.map(function (node, index) {
                     var nodeText = (0, _get2.default)(node, keywordLabel, '');
+                    var teststyles = node.getStyleClassCb();
 
                     return _react2.default.createElement(
                         _reactTransitionGroup.CSSTransition,

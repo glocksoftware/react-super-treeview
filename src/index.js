@@ -260,7 +260,8 @@ class SuperTreeview extends Component {
                     ? this.printNoChildrenMessage()
                     : nodeArray.map((node, index) => {
                           const nodeText = get(node, keywordLabel, '');
-
+                          const teststyles = node.getStyleClassCb();
+                          
                           return (
                               <CSSTransition
                                   {...nodeTransitionProps}
