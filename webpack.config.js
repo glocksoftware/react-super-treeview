@@ -1,52 +1,78 @@
-'use strict';
+"use strict";
 
-const path = require('path');
-const webpack = require('webpack');
-const nodeExternals = require('webpack-node-externals');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const path = require("path");
+const webpack = require("webpack");
+const nodeExternals = require("webpack-node-externals");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const isProduction = process.env.NODE_ENV === "production";
+
+console.log(`Building for ${isProduction ? "production" : "development"}`);
 
 const config = {
-    entry : {
-        main: './src',
+    entry: {
+        main: "./src",
     },
     output: {
-        path: path.join(__dirname, '/dist'),
-        publicPath: 'dist/',
-        filename: '[name].js',
-        libraryTarget: 'umd',
-        library: 'ExpandableTree',
+        path: path.join(__dirname, "/dist"),
+        publicPath: "dist/",
+        filename: "[name].js",
+        libraryTarget: "umd",
+        library: "ExpandableTree",
     },
     module: {
-        loaders: [
+        rules: [
             {
-                test: /\.js$/,
-                include: /src/,
-                loaders: ['babel-loader'],
+                test: /\.(?:js|mjs|cjs)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: [
+                            ["@babel/preset-env", { targets: "defaults" }],
+                            "@babel/preset-react",
+                        ],
+                    },
+                },
             },
             {
-                test: /\.scss/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader', 'sass-loader']
-                })
-            }
-        ]
+                test: /\.s[ac]ss$/i,
+                use: [
+                    process.env.NODE_ENV !== "production"
+                        ? "style-loader"
+                        : MiniCssExtractPlugin.loader,
+                    // Translates CSS into CommonJS
+                    "css-loader",
+                    // Compiles Sass to CSS
+                    "sass-loader",
+                ],
+            },
+        ],
     },
     plugins: [
-        new ExtractTextPlugin('style.css'),
-        new CopyWebpackPlugin([{
-            from: 'src/style.scss',
-            dest: 'dist/[name].[ext]'
-        }])
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            // filename: "[name].css",
+            // chunkFilename: "[id].css",
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: "src/style.scss",
+                    to: "[name][ext]",
+                },
+            ],
+        }),
     ],
 
     externals: [
-      nodeExternals({
-        // load non-javascript files with extensions, presumably via loaders
-        whitelist: [/\.(?!(?:jsx?|json)$).{1,5}$/i],
-      })
-    ]
-}
+        nodeExternals({
+            // load non-javascript files with extensions, presumably via loaders
+            allowlist: [/\.(?!(?:jsx?|json)$).{1,5}$/i],
+        }),
+    ],
+};
 
 module.exports = config;

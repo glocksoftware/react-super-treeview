@@ -1,6 +1,6 @@
 {
-  "name": "react-super-treeview",
-  "version": "0.3.2",
+  "name": "@glocksoftware/react-super-treeview",
+  "version": "0.3.3",
   "description": "React Super Treeview",
   "main": "dist/main.js",
   "engines": {
@@ -18,18 +18,22 @@
     "test:watch": "./node_modules/mocha-webpack/bin/mocha-webpack -w --webpack-config webpack.test.js \"src/**/*.test.js\"",
     "examples": "npm run clean:examples && npm run build && ./node_modules/webpack/bin/webpack.js --config webpack.examples.js",
     "examples:watch": "./node_modules/webpack/bin/webpack.js --config webpack.examples.js --watch",
-    "build": "npm run clean:dist && ./node_modules/webpack/bin/webpack.js",
+    "build": "npm run clean:dist && NODE_ENV=production npx webpack --mode production",
     "preversion": "npm run build",
     "prepublishOnly": "npm run build"
   },
+  "browserslist": "> 0.25%, not dead",
   "repository": {
     "type": "git",
-    "url": "https://github.com/azizali/react-super-treeview.git"
+    "url": "git+https://github.com/glocksoftware/react-super-treeview.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "bugs": {
-    "url": "https://github.com/azizali/react-super-treeview/issues"
+    "url": "https://github.com/glocksoftware/react-super-treeview/issues"
   },
-  "homepage": "https://github.com/azizali/react-super-treeview",
+  "homepage": "https://github.com/glocksoftware/react-super-treeview",
   "keywords": [
     "react-component",
     "react-super-treeview",
@@ -41,7 +45,11 @@
     "collapsable",
     "collapse"
   ],
-  "author": "Aziz Ali <aziz@ilovecoding.org>",
+  "authors": [
+    "Aziz Ali <aziz@ilovecoding.org>",
+    "Rungerd <valery@glocksoft.com>",
+    "Neocoder <neocoder@gmail.com>"
+  ],
   "license": "MIT",
   "peerDependencies": {
     "react": "^15.6.1 || ^16.0.0",
@@ -53,32 +61,30 @@
     "react-transition-group": "^2.2.0"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
+    "@babel/core": "^7.24.4",
+    "@babel/preset-env": "^7.24.4",
+    "@babel/preset-react": "^7.24.1",
+    "babel-loader": "^9.1.3",
     "chai": "^4.1.2",
-    "copy-webpack-plugin": "^4.2.0",
+    "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^0.28.7",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-15": "^1.2.0",
-    "extract-text-webpack-plugin": "^3.0.0",
-    "html-webpack-plugin": "^2.30.1",
+    "html-webpack-plugin": "^5.6.0",
+    "mini-css-extract-plugin": "^2.9.0",
     "mocha": "^4.0.1",
-    "mocha-webpack": "^1.1.0",
-    "node-sass": "^4.13.0",
     "null-loader": "^0.1.1",
     "react": "^15.5.10",
     "react-dom": "^15.5.10",
     "react-syntax-highlighter": "^5.8.0",
     "react-test-renderer": "^15.6.2",
-    "sass-loader": "^6.0.6",
+    "sass": "^1.75.0",
+    "sass-loader": "^14.2.1",
     "sinon": "^4.1.2",
     "sinon-chai": "^2.14.0",
     "style-loader": "^0.18.2",
-    "webpack": "^3.6.0",
-    "webpack-node-externals": "^1.6.0"
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-node-externals": "^3.0.0"
   }
 }
